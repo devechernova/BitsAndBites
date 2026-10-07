@@ -13,7 +13,7 @@ public class Getraenk : Posten
 
     public Getraenk(
         string name,
-        double preis,
+        decimal preis,
         bool alkoholisch,
         bool happyHour)
         : base(name, preis)
@@ -25,7 +25,7 @@ public class Getraenk : Posten
     {
         if (Alkoholisch && HappyHour)
         {
-            return Preis * 0.75;
+            return Preis * 0.75m;
         }
 
         return Preis;

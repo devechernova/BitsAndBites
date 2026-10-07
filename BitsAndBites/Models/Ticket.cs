@@ -14,7 +14,7 @@ internal class Ticket : Posten
 
     public Ticket(
     string name,
-    double preis,
+    decimal preis,
     DateTime startzeit,
     int minuten)
     : base(name, preis)
@@ -23,7 +23,7 @@ internal class Ticket : Posten
         Minuten = minuten;
     }
 
-    public override double BerechnePreis()
+    public override decimal BerechnePreis()
     {
         return Preis * Minuten;
     }

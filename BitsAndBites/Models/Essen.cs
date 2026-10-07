@@ -12,7 +12,7 @@ public class Essen : Posten
 
     public Essen (
         string name,
-        double preis,
+        decimal preis,
         bool extragross)
         : base(name, preis)
     {
@@ -22,7 +22,7 @@ public class Essen : Posten
     {
         if (Extragross)
         {
-            return Preis * 1.20;
+            return Preis * 1.20m;
         }
 
         return Preis;

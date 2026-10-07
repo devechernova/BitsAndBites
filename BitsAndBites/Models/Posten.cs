@@ -9,13 +9,13 @@ namespace BitsAndBites.Models;
 public abstract class Posten
 {
     public string Name { get; set; }
-    public double Preis { get; set; }
+    public decimal Preis { get; set; }
 
-    protected Posten(string name, double preis)
+    protected Posten(string name, decimal preis)
     {
         Name=name;
         Preis=preis;
     }
 
-    public abstract double BerechnePreis();
+    public abstract decimal BerechnePreis();
 }
