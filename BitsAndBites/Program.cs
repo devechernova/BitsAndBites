@@ -12,5 +12,12 @@ true,
 true);
 
         Console.WriteLine(bier.BerechnePreis());
+
+        Essen pizza = new Essen(
+"Pizza",
+8.50,
+true);
+
+        Console.WriteLine(pizza.BerechnePreis());
     }
 }
