@@ -4,9 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BitsAndBites.Models
+namespace BitsAndBites.Models;
+
+public class Getraenk : Posten
 {
-    internal class Getraenk
-    {
+    public bool Alkoholisch {  get; set; }
+    public bool HappyHour { get; set; }
+
+    public Getraenk(
+        string name,
+        double preis,
+        bool alkoholisch,
+        bool happyHour)
+        : base(name, preis)
+        {
+        Alkoholisch = alkoholisch;
+        HappyHour = happyHour;  
     }
+    public override double BerechnePreis()
+    {
+        if (Alkoholisch && HappyHour)
+        {
+            return Preis * 0.75;
+        }
+
+        return Preis;
+    }
+
+
 }

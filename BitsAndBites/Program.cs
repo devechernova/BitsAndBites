@@ -1,10 +1,16 @@
-﻿namespace BitsAndBites
+﻿using BitsAndBites.Models;
+namespace BitsAndBites;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        var bier = new Getraenk(
+"Bier",
+4.0,
+true,
+true);
+
+        Console.WriteLine(bier.BerechnePreis());
     }
 }
