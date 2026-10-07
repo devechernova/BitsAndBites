@@ -19,5 +19,13 @@ true);
 true);
 
         Console.WriteLine(pizza.BerechnePreis());
+
+        Ticket ticket = new Ticket(
+"Kurzticket",
+0.05,
+DateTime.Today.AddHours(14),
+60);
+
+        Console.WriteLine(ticket.BerechnePreis());
     }
 }
