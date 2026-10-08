@@ -21,7 +21,7 @@ public class Getraenk : Posten
         Alkoholisch = alkoholisch;
         HappyHour = happyHour;  
     }
-    public override double BerechnePreis()
+    public override decimal BerechnePreis()
     {
         if (Alkoholisch && HappyHour)
         {

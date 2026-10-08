@@ -1,11 +1,22 @@
 ﻿using BitsAndBites.Models;
+using BitsAndBites.Services;
+
 namespace BitsAndBites;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        /* var bier = new Getraenk(
+        KonsolenMenue menue = new KonsolenMenue();
+
+        menue.Start();
+    }
+
+}
+       
+
+
+/* var bier = new Getraenk(
  "Bier",
  4.0m,
  true,
@@ -39,102 +50,102 @@ internal class Program
 
          Console.WriteLine(ticket.BerechnePreis()); */
 
-            Console.WriteLine("=== Test 1 ===");
 
-            Getraenk cola = new Getraenk(
-                "Cola",
-                3.0m,
-                false,
-                true);
 
-            Console.WriteLine($"Ergebnis: {cola.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 3.00");
-            Console.WriteLine();
+        /*Console.WriteLine("=== Test 1 ===");
 
-            Console.WriteLine("=== Test 2 ===");
+           Getraenk cola = new Getraenk(
+               "Cola",
+               3.0m,
+               false,
+               true);
 
-            Getraenk bierOhneHappyHour = new Getraenk(
-                "Bier",
-                4.0m,
-                true,
-                false);
+           Console.WriteLine($"Ergebnis: {cola.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 3.00");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {bierOhneHappyHour.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 4.00");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 2 ===");
 
-            Console.WriteLine("=== Test 3 ===");
+           Getraenk bierOhneHappyHour = new Getraenk(
+               "Bier",
+               4.0m,
+               true,
+               false);
 
-            Getraenk bierMitHappyHour = new Getraenk(
-                "Bier",
-                4.0m,
-                true,
-                true);
+           Console.WriteLine($"Ergebnis: {bierOhneHappyHour.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 4.00");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {bierMitHappyHour.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 3.00");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 3 ===");
 
-            Console.WriteLine("=== Test 4 ===");
+           Getraenk bierMitHappyHour = new Getraenk(
+               "Bier",
+               4.0m,
+               true,
+               true);
 
-            Essen pizzaNormal = new Essen(
-                "Pizza",
-                8.5m,
-                false);
+           Console.WriteLine($"Ergebnis: {bierMitHappyHour.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 3.00");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {pizzaNormal.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 8.50");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 4 ===");
 
-            Console.WriteLine("=== Test 5 ===");
+           Essen pizzaNormal = new Essen(
+               "Pizza",
+               8.5m,
+               false);
 
-            Essen pizzaExtraGross = new Essen(
-                "Pizza",
-                8.5m,
-                true);
+           Console.WriteLine($"Ergebnis: {pizzaNormal.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 8.50");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {pizzaExtraGross.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 10.20");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 5 ===");
 
-            Console.WriteLine("=== Test 6 ===");
+           Essen pizzaExtraGross = new Essen(
+               "Pizza",
+               8.5m,
+               true);
 
-            Ticket ticket = new Ticket(
-                "Kurzticket",
-                0.05m,
-                DateTime.Today.AddHours(14),
-                60);
+           Console.WriteLine($"Ergebnis: {pizzaExtraGross.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 10.20");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {ticket.BerechnePreis()}");
-            Console.WriteLine("Erwartet: 3.00");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 6 ===");
 
-            Console.WriteLine("=== Test 7 ===");
+           Ticket ticket = new Ticket(
+               "Kurzticket",
+               0.05m,
+               DateTime.Today.AddHours(14),
+               60);
 
-            Bestellung bestellungOhneCard = new Bestellung();
+           Console.WriteLine($"Ergebnis: {ticket.BerechnePreis()}");
+           Console.WriteLine("Erwartet: 3.00");
+           Console.WriteLine();
 
-            bestellungOhneCard.PostenHinzufuegen(bierMitHappyHour);
-            bestellungOhneCard.PostenHinzufuegen(pizzaExtraGross);
-            bestellungOhneCard.PostenHinzufuegen(ticket);
+           Console.WriteLine("=== Test 7 ===");
 
-            Console.WriteLine($"Ergebnis: {bestellungOhneCard.BerechneBestellung()}");
-            Console.WriteLine("Erwartet: 16.20");
-            Console.WriteLine();
+           Bestellung bestellungOhneCard = new Bestellung();
 
-            Console.WriteLine("=== Test 8 ===");
+           bestellungOhneCard.PostenHinzufuegen(bierMitHappyHour);
+           bestellungOhneCard.PostenHinzufuegen(pizzaExtraGross);
+           bestellungOhneCard.PostenHinzufuegen(ticket);
 
-            bestellungOhneCard.BitAndBiteCard = true;
+           Console.WriteLine($"Ergebnis: {bestellungOhneCard.BerechneBestellung()}");
+           Console.WriteLine("Erwartet: 16.20");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {bestellungOhneCard.BerechneBestellung()}");
-            Console.WriteLine("Erwartet: 15.39");
-            Console.WriteLine();
+           Console.WriteLine("=== Test 8 ===");
 
-            Console.WriteLine("=== Test 9 ===");
+           bestellungOhneCard.BitAndBiteCard = true;
 
-            Bestellung leereBestellung = new Bestellung();
+           Console.WriteLine($"Ergebnis: {bestellungOhneCard.BerechneBestellung()}");
+           Console.WriteLine("Erwartet: 15.39");
+           Console.WriteLine();
 
-            Console.WriteLine($"Ergebnis: {leereBestellung.BerechneBestellung()}");
-            Console.WriteLine("Erwartet: 0.00");
-        
-    }
-}
+           Console.WriteLine("=== Test 9 ===");
+
+           Bestellung leereBestellung = new Bestellung();
+
+           Console.WriteLine($"Ergebnis: {leereBestellung.BerechneBestellung()}");
+           Console.WriteLine("Erwartet: 0.00"); */
+

@@ -18,7 +18,7 @@ public class Essen : Posten
     {
         Extragross = extragross;
     }
-    public override double BerechnePreis()
+    public override decimal BerechnePreis()
     {
         if (Extragross)
         {
