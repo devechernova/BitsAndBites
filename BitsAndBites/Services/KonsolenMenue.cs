@@ -120,14 +120,19 @@ public class KonsolenMenue
     {
         while (true)
         {
-            string? eingabe = Console.ReadLine();
+            string? eingabe = Console.ReadLine()?.ToLower();
 
-            if (bool.TryParse(eingabe, out bool wert))
+            if (eingabe == "t")
             {
-                return wert;
+                return true;
             }
 
-            Console.Write("Bitte true oder false eingeben: ");
+            if (eingabe == "f")
+            {
+                return false;
+            }
+
+            Console.Write("Bitte t oder f eingeben: ");
         }
     }
     private void GetraenkHinzufuegen()
@@ -138,10 +143,10 @@ public class KonsolenMenue
         Console.Write("Preis: ");
         decimal preis = PreisEinlesen();
 
-        Console.Write("Alkoholisch (true/false): ");
+        Console.Write("Alkoholisch (t(rue)/f(alse)): ");
         bool alkoholisch = BoolEinlesen();
 
-        Console.Write("Happy Hour (true/false): ");
+        Console.Write("Happy Hour (t(rue)/f(alse)): ");
         bool happyHour = BoolEinlesen();
 
         Getraenk getraenk = new Getraenk(
@@ -184,7 +189,7 @@ public class KonsolenMenue
         Console.Write("Preis: ");
         decimal preis = PreisEinlesen();
 
-        Console.Write("Extra Groß (true/false): ");
+        Console.Write("Extra Groß (t(rue)/f(alse)): ");
         bool extragross = BoolEinlesen();
 
         Essen essen = new Essen(

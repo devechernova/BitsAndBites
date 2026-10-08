@@ -25,7 +25,7 @@ public class Getraenk : Posten
     {
         if (Alkoholisch && HappyHour)
         {
-            return Preis * 0.75m;
+            return decimal.Round(Preis * 0.75m, 2);
         }
 
         return Preis;

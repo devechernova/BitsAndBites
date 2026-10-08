@@ -35,6 +35,7 @@ public class Bestellung
             gesamtbetrag *= 0.95m;
         }
 
-        return gesamtbetrag;
+        return decimal.Round(gesamtbetrag, 2);
+
     }
 }

@@ -22,7 +22,7 @@ public class Essen : Posten
     {
         if (Extragross)
         {
-            return Preis * 1.20m;
+            return decimal.Round(Preis * 1.20m, 2);
         }
 
         return Preis;

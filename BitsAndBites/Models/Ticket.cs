@@ -25,6 +25,6 @@ internal class Ticket : Posten
 
     public override decimal BerechnePreis()
     {
-        return Preis * Minuten;
+        return decimal.Round(Preis * Minuten, 2);
     }
 }
