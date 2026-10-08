@@ -58,7 +58,7 @@ public class KonsolenMenue
                     break;
 
                 case "5":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    BestellungAnzeigen();
                     break;
 
                 case "6":
@@ -110,5 +110,27 @@ public class KonsolenMenue
 
         Console.WriteLine();
         Console.WriteLine("Getränk wurde hinzugefügt.");
+
+
+    }
+
+    private void BestellungAnzeigen()
+    {
+        Console.WriteLine();
+        Console.WriteLine("=== Aktuelle Bestellung ===");
+        Console.WriteLine();
+
+        foreach (Posten posten in bestellung.Bestellposten)
+        {
+            Console.WriteLine(
+                $"{posten.Name} - {posten.BerechnePreis()} €");
+        }
+
+        Console.WriteLine();
+
+        Console.WriteLine($"Card: {bestellung.BitAndBiteCard}");
+
+        Console.WriteLine(
+            $"Gesamtbetrag: {bestellung.BerechneBestellung()} €");
     }
 }

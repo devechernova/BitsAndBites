@@ -7,6 +7,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         KonsolenMenue menue = new KonsolenMenue();
 
         menue.Start();
