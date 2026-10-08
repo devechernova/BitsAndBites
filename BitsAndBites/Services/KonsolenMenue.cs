@@ -46,7 +46,7 @@ public class KonsolenMenue
                     break;
 
                 case "2":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    EssenHinzufuegen();
                     break;
 
                 case "3":
@@ -86,13 +86,22 @@ public class KonsolenMenue
             }
         }
     }
+
+    private decimal PreisEinlesen()
+    {
+        string? eingabe = Console.ReadLine();
+
+        eingabe = eingabe?.Replace('.', ',');
+
+        return decimal.Parse(eingabe!);
+    }
     private void GetraenkHinzufuegen()
     {
         Console.Write("Name: ");
         string? name = Console.ReadLine();
 
         Console.Write("Preis: ");
-        decimal preis = decimal.Parse(Console.ReadLine()!);
+        decimal preis = PreisEinlesen();
 
         Console.Write("Alkoholisch (true/false): ");
         bool alkoholisch = bool.Parse(Console.ReadLine()!);
@@ -132,5 +141,27 @@ public class KonsolenMenue
 
         Console.WriteLine(
             $"Gesamtbetrag: {bestellung.BerechneBestellung()} €");
+    }
+
+    private void EssenHinzufuegen()
+    {
+        Console.Write("Name: ");
+        string? name = Console.ReadLine();
+
+        Console.Write("Preis: ");
+        decimal preis = PreisEinlesen();
+
+        Console.Write("Extra Groß (true/false): ");
+        bool extragross = bool.Parse(Console.ReadLine()!);
+
+        Essen essen = new Essen(
+            name!,
+            preis,
+            extragross);
+
+        bestellung.PostenHinzufuegen(essen);
+
+        Console.WriteLine();
+        Console.WriteLine("Essen wurde hinzugefügt.");
     }
 }
