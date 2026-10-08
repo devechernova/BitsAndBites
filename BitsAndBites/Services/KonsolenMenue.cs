@@ -54,7 +54,7 @@ public class KonsolenMenue
                     break;
 
                 case "4":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    PostenEntfernen();
                     break;
 
                 case "5":
@@ -211,5 +211,33 @@ public class KonsolenMenue
         {
             Console.WriteLine("Bits & Bites-Card deaktiviert.");
         }
+    }
+
+    private void PostenEntfernen()
+    {
+        if (bestellung.Bestellposten.Count == 0)
+        {
+            Console.WriteLine("Keine Posten vorhanden.");
+            return;
+        }
+
+        Console.WriteLine("=== Posten entfernen ===");
+        Console.WriteLine();
+
+        for (int i = 0; i < bestellung.Bestellposten.Count; i++)
+        {
+            Console.WriteLine(
+                $"{i + 1}. {bestellung.Bestellposten[i].Name}");
+        }
+
+        Console.WriteLine();
+        Console.Write("Nummer: ");
+
+        int nummer = int.Parse(Console.ReadLine()!);
+
+        bestellung.Bestellposten.RemoveAt(nummer - 1);
+
+        Console.WriteLine();
+        Console.WriteLine("Posten wurde entfernt.");
     }
 }
