@@ -62,7 +62,7 @@ public class KonsolenMenue
                     break;
 
                 case "6":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    CardUmschalten();
                     break;
 
                 case "7":
@@ -196,5 +196,20 @@ public class KonsolenMenue
 
         Console.WriteLine();
         Console.WriteLine("Ticket wurde hinzugefügt.");
+    }
+    private void CardUmschalten()
+    {
+        bestellung.BitAndBiteCard = !bestellung.BitAndBiteCard;
+
+        Console.WriteLine();
+
+        if (bestellung.BitAndBiteCard)
+        {
+            Console.WriteLine("Bits & Bites-Card aktiviert.");
+        }
+        else
+        {
+            Console.WriteLine("Bits & Bites-Card deaktiviert.");
+        }
     }
 }
