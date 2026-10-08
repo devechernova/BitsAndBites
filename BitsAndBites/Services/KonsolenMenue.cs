@@ -88,11 +88,47 @@ public class KonsolenMenue
     }
     private decimal PreisEinlesen()
     {
-        string? eingabe = Console.ReadLine();
+        while (true)
+        { 
+            string? eingabe = Console.ReadLine();
 
-        eingabe = eingabe?.Replace('.', ',');
+            eingabe = eingabe?.Replace('.', ',');
 
-        return decimal.Parse(eingabe!);
+            if (decimal.TryParse(eingabe, out decimal preis))
+            {
+                return preis;
+            }
+
+            Console.Write("Ungültiger Preis. Bitte erneut eingeben: ");
+        }
+    }
+    private int ZahlEinlesen()
+    {
+        while (true)
+        {
+            string? eingabe = Console.ReadLine();
+
+            if (int.TryParse(eingabe, out int zahl))
+            {
+                return zahl;
+            }
+
+            Console.Write("Ungültige Zahl. Bitte erneut eingeben: ");
+        }
+    }
+    private bool BoolEinlesen()
+    {
+        while (true)
+        {
+            string? eingabe = Console.ReadLine();
+
+            if (bool.TryParse(eingabe, out bool wert))
+            {
+                return wert;
+            }
+
+            Console.Write("Bitte true oder false eingeben: ");
+        }
     }
     private void GetraenkHinzufuegen()
     {
@@ -103,10 +139,10 @@ public class KonsolenMenue
         decimal preis = PreisEinlesen();
 
         Console.Write("Alkoholisch (true/false): ");
-        bool alkoholisch = bool.Parse(Console.ReadLine()!);
+        bool alkoholisch = BoolEinlesen();
 
         Console.Write("Happy Hour (true/false): ");
-        bool happyHour = bool.Parse(Console.ReadLine()!);
+        bool happyHour = BoolEinlesen();
 
         Getraenk getraenk = new Getraenk(
             name!,
@@ -149,7 +185,7 @@ public class KonsolenMenue
         decimal preis = PreisEinlesen();
 
         Console.Write("Extra Groß (true/false): ");
-        bool extragross = bool.Parse(Console.ReadLine()!);
+        bool extragross = BoolEinlesen();
 
         Essen essen = new Essen(
             name!,
@@ -170,13 +206,13 @@ public class KonsolenMenue
         decimal preis = PreisEinlesen();
 
         Console.Write("Startstunde: ");
-        int stunde = int.Parse(Console.ReadLine()!);
+        int stunde = ZahlEinlesen();
 
         Console.Write("Startminute: ");
-        int minute = int.Parse(Console.ReadLine()!);
+        int minute = ZahlEinlesen();
 
         Console.Write("Minuten: ");
-        int minuten = int.Parse(Console.ReadLine()!);
+        int minuten = ZahlEinlesen();
 
         DateTime startzeit = DateTime.Today
             .AddHours(stunde)
@@ -228,7 +264,13 @@ public class KonsolenMenue
         Console.WriteLine();
         Console.Write("Nummer: ");
 
-        int nummer = int.Parse(Console.ReadLine()!);
+        int nummer = ZahlEinlesen();
+
+        if (nummer < 1 || nummer > bestellung.Bestellposten.Count)
+        {
+            Console.WriteLine("Ungültige Nummer.");
+            return;
+        }
 
         bestellung.Bestellposten.RemoveAt(nummer - 1);
 
