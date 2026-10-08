@@ -172,6 +172,15 @@ public class KonsolenMenue
         {
             Console.WriteLine(
                 $"{posten.Name} - {posten.BerechnePreis()} €");
+            if (posten is Ticket ticket)
+            {
+                Console.WriteLine(
+                    $"   Start: {ticket.Startzeit:HH:mm}");
+
+                Console.WriteLine(
+                    $"   Ende: {ticket.Endzeit:HH:mm}");
+            }
+
         }
 
         Console.WriteLine();
@@ -295,6 +304,14 @@ public class KonsolenMenue
         {
             Console.WriteLine(
                 $"{posten.Name} - {posten.BerechnePreis()} €");
+            if (posten is Ticket ticket)
+            {
+                Console.WriteLine(
+                    $"   Start: {ticket.Startzeit:HH:mm}");
+
+                Console.WriteLine(
+                    $"   Ende: {ticket.Endzeit:HH:mm}");
+            }
         }
 
         Console.WriteLine();

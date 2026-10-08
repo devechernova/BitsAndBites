@@ -11,6 +11,13 @@ internal class Ticket : Posten
     public DateTime Startzeit { get; set; }
 
     public int Minuten { get; set; }
+    public DateTime Endzeit
+    {
+        get
+        {
+            return Startzeit.AddMinutes(Minuten);
+        }
+    }
 
     public Ticket(
     string name,
