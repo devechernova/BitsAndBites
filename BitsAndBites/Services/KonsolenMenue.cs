@@ -66,7 +66,7 @@ public class KonsolenMenue
                     break;
 
                 case "7":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    BestellungUebermitteln();
                     break;
 
                 case "8":
@@ -86,7 +86,6 @@ public class KonsolenMenue
             }
         }
     }
-
     private decimal PreisEinlesen()
     {
         string? eingabe = Console.ReadLine();
@@ -122,7 +121,6 @@ public class KonsolenMenue
 
 
     }
-
     private void BestellungAnzeigen()
     {
         Console.WriteLine();
@@ -142,7 +140,6 @@ public class KonsolenMenue
         Console.WriteLine(
             $"Gesamtbetrag: {bestellung.BerechneBestellung()} €");
     }
-
     private void EssenHinzufuegen()
     {
         Console.Write("Name: ");
@@ -164,7 +161,6 @@ public class KonsolenMenue
         Console.WriteLine();
         Console.WriteLine("Essen wurde hinzugefügt.");
     }
-
     private void TicketHinzufuegen()
     {
         Console.Write("Name: ");
@@ -212,7 +208,6 @@ public class KonsolenMenue
             Console.WriteLine("Bits & Bites-Card deaktiviert.");
         }
     }
-
     private void PostenEntfernen()
     {
         if (bestellung.Bestellposten.Count == 0)
@@ -239,5 +234,35 @@ public class KonsolenMenue
 
         Console.WriteLine();
         Console.WriteLine("Posten wurde entfernt.");
+    }
+    private void BestellungUebermitteln()
+    {
+        Console.WriteLine();
+        Console.WriteLine("=== Bestellung übermittelt ===");
+        Console.WriteLine();
+
+        Console.WriteLine($"Zeitpunkt: {DateTime.Now}");
+        Console.WriteLine();
+
+        foreach (Posten posten in bestellung.Bestellposten)
+        {
+            Console.WriteLine(
+                $"{posten.Name} - {posten.BerechnePreis()} €");
+        }
+
+        Console.WriteLine();
+
+        if (bestellung.BitAndBiteCard)
+        {
+            Console.WriteLine("Bits & Bites-Card aktiv");
+        }
+
+        Console.WriteLine(
+            $"Gesamtbetrag: {bestellung.BerechneBestellung()} €");
+
+        bestellung = new Bestellung();
+
+        Console.WriteLine();
+        Console.WriteLine("Neue Bestellung wurde gestartet.");
     }
 }
