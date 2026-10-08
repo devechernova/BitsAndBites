@@ -42,7 +42,7 @@ public class KonsolenMenue
             switch (eingabe)
             {
                 case "1":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    GetraenkHinzufuegen();
                     break;
 
                 case "2":
@@ -85,5 +85,30 @@ public class KonsolenMenue
                 Console.ReadKey();
             }
         }
+    }
+    private void GetraenkHinzufuegen()
+    {
+        Console.Write("Name: ");
+        string? name = Console.ReadLine();
+
+        Console.Write("Preis: ");
+        decimal preis = decimal.Parse(Console.ReadLine()!);
+
+        Console.Write("Alkoholisch (true/false): ");
+        bool alkoholisch = bool.Parse(Console.ReadLine()!);
+
+        Console.Write("Happy Hour (true/false): ");
+        bool happyHour = bool.Parse(Console.ReadLine()!);
+
+        Getraenk getraenk = new Getraenk(
+            name!,
+            preis,
+            alkoholisch,
+            happyHour);
+
+        bestellung.PostenHinzufuegen(getraenk);
+
+        Console.WriteLine();
+        Console.WriteLine("Getränk wurde hinzugefügt.");
     }
 }
