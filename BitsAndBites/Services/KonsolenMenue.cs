@@ -50,7 +50,7 @@ public class KonsolenMenue
                     break;
 
                 case "3":
-                    Console.WriteLine("Noch nicht implementiert.");
+                    TicketHinzufuegen();
                     break;
 
                 case "4":
@@ -163,5 +163,38 @@ public class KonsolenMenue
 
         Console.WriteLine();
         Console.WriteLine("Essen wurde hinzugefügt.");
+    }
+
+    private void TicketHinzufuegen()
+    {
+        Console.Write("Name: ");
+        string? name = Console.ReadLine();
+
+        Console.Write("Preis pro Minute: ");
+        decimal preis = PreisEinlesen();
+
+        Console.Write("Startstunde: ");
+        int stunde = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Startminute: ");
+        int minute = int.Parse(Console.ReadLine()!);
+
+        Console.Write("Minuten: ");
+        int minuten = int.Parse(Console.ReadLine()!);
+
+        DateTime startzeit = DateTime.Today
+            .AddHours(stunde)
+            .AddMinutes(minute);
+
+        Ticket ticket = new Ticket(
+            name!,
+            preis,
+            startzeit,
+            minuten);
+
+        bestellung.PostenHinzufuegen(ticket);
+
+        Console.WriteLine();
+        Console.WriteLine("Ticket wurde hinzugefügt.");
     }
 }
