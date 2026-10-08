@@ -8,6 +8,7 @@ namespace BitsAndBites.Models;
 
 public class Bestellung
 {
+    private const decimal CardRabatt = 0.95m;
     public bool BitAndBiteCard { get; set; }
 
     public List<Posten> Bestellposten { get; set; }
@@ -32,7 +33,7 @@ public class Bestellung
 
         if (BitAndBiteCard)
         {
-            gesamtbetrag *= 0.95m;
+            gesamtbetrag *= CardRabatt;
         }
 
         return decimal.Round(gesamtbetrag, 2);

@@ -8,6 +8,7 @@ namespace BitsAndBites.Models;
 
 public class Getraenk : Posten
 {
+    private const decimal HappyHourRabatt = 0.75m;
     public bool Alkoholisch {  get; set; }
     public bool HappyHour { get; set; }
 
@@ -25,7 +26,7 @@ public class Getraenk : Posten
     {
         if (Alkoholisch && HappyHour)
         {
-            return decimal.Round(Preis * 0.75m, 2);
+            return decimal.Round(Preis * HappyHourRabatt, 2);
         }
 
         return Preis;

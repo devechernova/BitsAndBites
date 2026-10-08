@@ -8,6 +8,7 @@ namespace BitsAndBites.Models;
 
 public class Essen : Posten
 {
+    private const decimal ExtraGrossFaktor = 1.20m;
     public bool Extragross {  get; set; }
 
     public Essen (
@@ -22,7 +23,7 @@ public class Essen : Posten
     {
         if (Extragross)
         {
-            return decimal.Round(Preis * 1.20m, 2);
+            return decimal.Round(Preis * ExtraGrossFaktor, 2);
         }
 
         return Preis;
